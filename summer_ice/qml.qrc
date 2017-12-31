@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>images/botton_down.png</file>
+        <file>images/botton_up.png</file>
+        <file>images/botton_rect.png</file>
+        <file>images/wheel_area.png</file>
+        <file>images/botton_plane.png</file>
+        <file>item/Parts_toggle.qml</file>
+        <file>item/Asm_toggles.qml</file>
+        <file>images/botton_rect_t.png</file>
+        <file>item/Parts_knocker.qml</file>
+        <file>item/Parts_scroll_list.qml</file>
+        <file>item/Parts_wakeUpGirls.qml</file>
+        <file>item/Parts_hscroll_list.qml</file>
+        <file>images/arrow.png</file>
+        <file>images/sunrise-3048052_640.jpg</file>
+    </qresource>
+</RCC>

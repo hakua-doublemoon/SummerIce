@@ -1,0 +1,21 @@
+{
+    "character": [
+        "sample"
+    ],
+    "list": [
+        {
+            "length": 16.0,
+            "name": "Clock-Alarm Dig01-1L.mp3",
+            "picture": "sunrise-3048052_640.jpg"
+        },
+        {
+            "comment": "これを最後の要素とすること",
+            "length": 0.0,
+            "name": "piyo.mp3",
+            "picture": "hoge.png"
+        }
+    ],
+    "selectChara": 0,
+    "selecting": 0
+}
+

@@ -6,7 +6,6 @@ Item {
     //============================================================
     // <HEAD>
     //============================================================
-    property var _a_toggles: null
     property var wheelList: []
     property int selecting: 100
     property int listMax: wheelList.length-1
@@ -17,7 +16,7 @@ Item {
     //============================================================
     Rectangle {
         height: _voice_title.height + text_h_margin
-        width:  _a_toggles.wid + voice_name_box_added_width
+        width:  _toggles.wid + voice_name_box_added_width
         id: _knocker_rect
         color: "#f0f8ff"
 

@@ -54,7 +54,6 @@ ApplicationWindow {
         id: _chara_list
         x:  _toggles.x - voice_name_box_added_width/2
         y:  400
-        _a_toggles: _toggles
         wheelList: voice_list.character
         selecting: voice_list.selectChara
         listMin: 0
@@ -70,7 +69,6 @@ ApplicationWindow {
         anchors.top:  _chara_list.bottom
         //x:  _toggles.x - voice_name_box_added_width/2
         //y:  400
-        _a_toggles: _toggles
         wheelList: voice_list.list
         selecting: voice_list.selecting
         onSelectingChanged: {
@@ -83,7 +81,6 @@ ApplicationWindow {
         id: _knocker
         x:  _toggles.x
         y:  550
-        _a_toggles: _toggles
     }
 
     // めざまし中の画像

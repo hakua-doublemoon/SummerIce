@@ -6,14 +6,13 @@ Item {
     //============================================================
     // <HEAD>
     //============================================================
-    property var _a_toggles: null
 
     //============================================================
     // <BODY>
     //============================================================
     Rectangle {
         height: _pongLabel.height + text_h_margin
-        width:  _a_toggles.wid
+        width:  _toggles.wid
         id: _alerm_switch
         color: "#f0f8ff"
         Image {
@@ -24,13 +23,13 @@ Item {
             anchors.fill: parent
             onClicked: {
                 console.log("onclicked->ping");
-                _pongLabel.text = Ice.setAlerm(_a_toggles.public_hour, _a_toggles.public_min);
-                Sky.ping2server("hoge:" + _a_toggles.public_hour + ":" + _a_toggles.public_min);
+                _pongLabel.text = Ice.setAlerm(_toggles.public_hour, _toggles.public_min);
+                Sky.ping2server("hoge:" + _toggles.public_hour + ":" + _toggles.public_min);
                 pingStatus = def_Send;
                 //_alerm_voice.play();
                 //Ice.rangAlerm();
                 //Star.playFile(alerm_name)
-                _a_toggles.stop_privent();
+                _toggles.stop_privent();
             }
         }
         Text {

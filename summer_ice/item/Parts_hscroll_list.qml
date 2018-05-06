@@ -50,6 +50,7 @@ Item {
             property int x_end: 0
             hoverEnabled: false
             onWheel: {
+                isFirstSetting = true;
                 proc_onWheel(wheel.angleDelta.x);
             }
             onPressed: {
@@ -58,6 +59,7 @@ Item {
             }
             onReleased: {
                 x_end = mouseX;
+                isFirstSetting = true;
                 proc_onWheel(x_start-x_end);
                 x_start = x_end;
                 //console.log("end[1]   = " + y_end);

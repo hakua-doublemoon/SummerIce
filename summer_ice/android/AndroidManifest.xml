@@ -5,7 +5,9 @@
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
     <!--
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application android:hardwareAccelerated="true" android:name="org.qtproject.qt5.android.bindings.QtApplication" android:label="-- %%INSERT_APP_NAME%% --">
         <activity android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|layoutDirection|locale|fontScale|keyboard|keyboardHidden|navigation" android:name="org.qtproject.qt5.android.bindings.QtActivity" android:label="-- %%INSERT_APP_NAME%% --" android:screenOrientation="unspecified" android:launchMode="singleTop">
@@ -18,7 +20,7 @@
             <!-- meta-data android:name="android.app.arguments" android:value="arg1 arg2 arg3"/ -->
             <!-- Application arguments -->
 
-            <meta-data android:name="android.app.lib_name" android:value="summer_clock"/>
+            <meta-data android:name="android.app.lib_name" android:value="summer_ice"/>
             <meta-data android:name="android.app.qt_sources_resource_id" android:resource="@array/qt_sources"/>
             <meta-data android:name="android.app.repository" android:value="default"/>
             <meta-data android:name="android.app.qt_libs_resource_id" android:resource="@array/qt_libs"/>
@@ -68,11 +70,11 @@
 
         <!-- For adding service(s) please check: https://wiki.qt.io/AndroidServices -->
         <!--service android:process=":qt" android:name="org.qtproject.qt5.android.bindings.QtService"-->
-        <service android:process=":qt" android:name=".Spring">
+        <service android:process=":qt" android:name="com.summer.test.Spring">
         <!-- android:process=":qt" is needed to force the service to run on a separate process than the Activity -->
             <!-- Application arguments -->
             <meta-data android:name="android.app.arguments" android:value="-service"/>
-            <meta-data android:name="android.app.lib_name" android:value="ice_clock"/>
+            <meta-data android:name="android.app.lib_name" android:value="summer_ice"/>
 
             <!-- Minitstro -->
             <meta-data android:name="android.app.qt_sources_resource_id" android:resource="@array/qt_sources"/>
@@ -114,7 +116,7 @@
         </receiver>
         -->
 
-        <receiver android:name=".AutumnBCasRcv" android:process=":remote" />
+        <receiver android:name=".AutumnBCasRcv" android:process=":remote"/>
 
     </application>
 

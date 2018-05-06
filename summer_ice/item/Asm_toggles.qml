@@ -4,7 +4,6 @@ import QtQuick.Layouts 1.0
 
 import "."
 
-//ApplicationWindow {
 Item {
     //============================================================
     // <HEAD>
@@ -13,6 +12,7 @@ Item {
     property int public_min:  _min_top.public_num *10 + _min_und.public_num
     property int wid: _toggles_body.width
     property alias ringingFlag: _ring_timer.running
+    property alias time_check:  _check_time.time_checker
 
     //============================================================
     // <BODY>
@@ -62,6 +62,10 @@ Item {
         running: true
         repeat: true
         onTriggered: {
+            time_checker();
+        }
+        property var time_checker: function()
+        {
             console.log("SummerIce/QML::_alerm / polling");
             var prop = Ice.readfile_alerm();
             if (!prop.isOK) {

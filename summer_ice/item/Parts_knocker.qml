@@ -26,9 +26,6 @@ Item {
                 _pongLabel.text = Ice.setAlerm(_toggles.public_hour, _toggles.public_min);
                 Sky.ping2server("hoge:" + _toggles.public_hour + ":" + _toggles.public_min);
                 pingStatus = def_Send;
-                //_alerm_voice.play();
-                //Ice.rangAlerm();
-                //Star.playFile(alerm_name)
                 _toggles.stop_privent();
             }
         }

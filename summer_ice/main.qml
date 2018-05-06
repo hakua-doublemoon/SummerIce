@@ -22,8 +22,10 @@ ApplicationWindow {
     property string voice_name: _voice_list.wheelList[_voice_list.selecting].name
     property string voice_path: voice_resource + voice_name
     property string pict_name: _voice_list.wheelList[_voice_list.selecting].picture
-    property string pict_path: "file://" + voice_resource + pict_name
+    //property string pict_path: "file://" + voice_resource + pict_name // ストレージのどこかのファイルを使う時はこっちのfile://をつける方にする
+    property string pict_path: "qrc://" + voice_resource + pict_name
     property real   ring_interval: (_voice_list.wheelList[_voice_list.selecting].length) + 3.0
+    property bool   isFirstSetting: false // 操作するとtrueになり設定を書き換える
 
     readonly property int def_Recv:  0
     readonly property int def_Send:  1
@@ -39,7 +41,7 @@ ApplicationWindow {
         source: "qrc:/images/sunrise-3048052_640.jpg"
     }
 
-    // 時間設定域
+    // 時間設定域。タイマーもこいつが持ってる
     Asm_toggles {
         id: _toggles
         x: 230
@@ -59,8 +61,10 @@ ApplicationWindow {
         listMin: 0
         listMax: voice_list.character.length-1
         onSelectingChanged: {
-            _voice_list.set_max_min(wheelList[selecting]);
-            Ice.update_voice_selectChara(selecting);
+            if (isFirstSetting) {
+                _voice_list.set_max_min(wheelList[selecting]);
+                Ice.update_voice_selectChara(selecting);
+            }
         }
     }
     Parts_scroll_list {
@@ -72,7 +76,9 @@ ApplicationWindow {
         wheelList: voice_list.list
         selecting: voice_list.selecting
         onSelectingChanged: {
-            Ice.update_voice_select(selecting);
+            if (isFirstSetting) {
+               Ice.update_voice_select(selecting);
+            }
         }
     }
 
@@ -91,19 +97,12 @@ ApplicationWindow {
         visible: false //_toggles.ringing_flag
         onWaked: {
             pingStatus = def_NoSnd;
-            Sky.ping2server("hoge:99:99");
+            Ice.set_alerm_monitor(99, 99);
             _toggles.stopAlerm();
         }
     }
-    
-    // 再生機能。とりあえずここに
-    //Audio {
-    //    id: _alerm_voice
-    //    volume: 1.0
-    //    source: "qrc:/voices/sayaka_01.mp3"
-    //}
 
-    // pingしたときのあれ。多分いらないけど残してある
+    // pingしたときの応答
     Connections {
         target: ping_pong
         onPong: {
@@ -115,8 +114,21 @@ ApplicationWindow {
     }
 
     Component.onCompleted: {
-        console.log("SummerIce::onComplete");
-        Sky.ping2server("init");
-        //Ice.set_window_flag();
+        console.log("SummerIce::onComplete [s]");
+        console.log("pict_path: " + pict_path);
+        console.log("pict_name: " + pict_name);
+        Ice.set_main_ready(true);
+        _toggles.time_check(); // 一発チェックしておく
+        console.log("SummerIce::onComplete [e]");
+    }
+    Component.onDestruction: {
+        console.log("SummerIce::onDestruction [s]"); // ここは通らないっぽい
+    }
+
+    property int visibilityFlag: Qt.WindowMaximized
+    onVisibilityFlagChanged: {
+        console.log("SummerIce::onGivenVisibilityChanged = " + visibilityFlag);
+        _toggles.time_check(); // 一発チェックする
+        //visibility = visibilityFlag;
     }
 }

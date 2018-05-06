@@ -15,5 +15,7 @@
         <file>item/Parts_hscroll_list.qml</file>
         <file>images/arrow.png</file>
         <file>images/sunrise-3048052_640.jpg</file>
+        <file>images/voice_list.json</file>
+        <file>images/Clock-Alarm Dig01-1L.mp3</file>
     </qresource>
 </RCC>

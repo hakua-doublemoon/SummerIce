@@ -80,10 +80,10 @@ public class Winter extends QtService
         return;
     }
 
-    // アラームセットする奴。没。
+    // アラームセットする奴。
     public void j_setAlerm(Context ctx)
     {
-        Log.d("SummerIce", "Set Alarm[S]");
+        Log.d("SummerIce", "Set AlarmManager[S]");
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
@@ -91,12 +91,15 @@ public class Winter extends QtService
 
         //Intent intent = new Intent(getApplicationContext(), AutumnBCasRcv.class);
         Intent intent = new Intent(ctx, AutumnBCasRcv.class);
+        //Intent intent = new Intent(ctx, ctx.class);
         PendingIntent pending = PendingIntent.getBroadcast(ctx, 0, intent, 0);
 
         AlarmManager am = (AlarmManager)ctx.getSystemService(ctx.ALARM_SERVICE);
         am.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pending);
 
-        Log.d("SummerIce", "Set Alarm[E]");
+        Log.d("SummerIce", "Set AlarmManager[E]");
+
+        //ctx.finish();
 
         return;
     }
